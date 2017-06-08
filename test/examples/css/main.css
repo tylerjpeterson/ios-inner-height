@@ -1,0 +1,106 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Georgia;
+}
+
+body {
+	height: 1500px;
+	text-align: center;
+	color: #000;
+	background-color: #dedede;
+}
+
+h1 {
+	margin: 1.4em auto 0.5em;
+	font-size: 1.5em;
+	font-weight: lighter;
+	font-family: menlo;
+}
+
+pre {
+	text-align: left;
+	display: inline-block;
+	font-size: 0.8em;
+	background-color: #ececec;
+	border-radius: 3px;
+	border: 1px solid #bbb;
+	padding: 5px 20px;
+	box-sizing: border-box;
+	line-height: 12px;
+	width: 90%;
+	margin-bottom: 0.5em;
+	font-family: menlo, 'Courier new';
+	background-image: linear-gradient(to bottom, #ffffff, #efefef);
+}
+
+span {
+	float: right;
+	font-size: 1.2em;
+	line-height: 12px;
+	font-family: Courier;
+}
+
+button {
+	font-family: 'LacrimaSenza';
+	background-image: linear-gradient(to bottom, #efefef, #dbdbdb);
+	border-radius: 3px;
+	color: #111111;
+	font-size: 12px;
+	padding: 5px 14px;
+	border: solid #bfbfbf 1px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+button.active {
+	background: #111111;
+	background-image: linear-gradient(to bottom, #111111, #333333);
+	border: solid #000000 1px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+button:focus {
+	outline: none;
+}
+
+.sub {
+	font-family: 'LacrimaSenza';
+	display: block;
+}
+
+h2 {
+	font-family: 'LacrimaSenza';
+	font-size: 22px;
+}
+
+hr {
+	height: 0.5px;
+	overflow: hidden;
+	border: none;
+	background-color: #ccc;
+	margin: 1em 0;
+}
+
+p {
+	margin: 0.5em auto;
+}
+
+button .off {
+	font-weight: bold;
+	display: inline;
+}
+
+button .on {
+	font-weight: bold;
+	display: none;
+}
+
+button.active .off {
+	display: none;
+}
+
+button.active .on {
+	display: inline;
+}
