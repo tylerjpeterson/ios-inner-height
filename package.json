@@ -48,7 +48,12 @@
       "navigator"
     ]
   },
-  "keywords": [],
+  "keywords": [
+    "ios",
+    "safari",
+    "innerHeight",
+    "innerWidth"
+  ],
   "engines": {
     "node": ">=0.10.3"
   },
