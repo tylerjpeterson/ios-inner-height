@@ -5,7 +5,7 @@ Object.defineProperty(window.navigator, 'userAgent', {get: () => 'i am an iphone
 
 // Tape tests: https://github.com/substack/tape
 const test = require('tape');
-const vph = require('./../../');
+const vph = require('./../..');
 
 test('should return proper user agent', assert => {
 	assert.equal('i am an iphone', window.navigator.userAgent);
