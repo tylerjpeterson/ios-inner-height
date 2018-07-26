@@ -23,13 +23,15 @@ This page reports the current height returned by this module and by calling `win
 | `window.innerHeight` | `559px`     | `628px`      | `375px <= => 331px`  |
 
 
-## The old way
-We used to be able to hide the URL control and menu bar without requiring scroll ...on iOS6.
-This obviously doesn't cut it anymore.
+![alt text](https://kettle-modules.s3.amazonaws.com/ios-inner-height/ios-1.png)
+![alt text](https://kettle-modules.s3.amazonaws.com/ios-inner-height/ios-2.png)
 
-```js
-window.scrollTo(0, -1);
-```
+*Measurements upon initial load and after scroll.*
+
+![alt text](https://kettle-modules.s3.amazonaws.com/ios-inner-height/ios-3.png)
+![alt text](https://kettle-modules.s3.amazonaws.com/ios-inner-height/ios-4.png)
+
+*Measurements upon initial load and after scroll (landscape).*
 
 
 ## Installation
@@ -40,7 +42,7 @@ $ npm i -S ios-inner-height
 ```
 
 
-## Usage
+## Usage as a module
 The module exposes a getter that can be called as often as you like.
 It will automatically account for the window's current orientation.
 And all measurements are done upon instantiation, so future calls should introduce zero DOM overhead.
@@ -50,6 +52,31 @@ var innerHeight = require('ios-inner-height');
 
 // now anytime you need it, get a reliable window height
 console.log(innerHeight());
+```
+
+
+## Built file usage
+A built file and its minififed version are included in the `dist` folder.
+This is a standard [`browserify`](https://github.com/browserify/browserify) standalone file.
+This file will work with other module systems and sets `iosInnerHeight` as a global method if no module system is found. 
+
+```html
+<!doctype html>
+<html>
+<head>
+  <title>iOS Inner Height</title>
+</head>
+<body>
+  <p>iosInnerHeight measurement: <span id="measurement"></span></p>
+  <script src="some-path/ios-inner-height.js"></script>
+  <script>
+    var el = document.getElementById('measurement');
+    setInterval(function () {
+      el.textContent = iosInnerHeight() + 'px';
+    }, 100);
+  </script>
+</body>
+</html>
 ```
 
 
