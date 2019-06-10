@@ -11,6 +11,9 @@
  * device's current orientation.
  */
 module.exports = (function () {
+	if(typeof window === "undefined" || typeof navigator === "undefined") {
+		return 0;
+	}
 	// Non-iOS browsers return window.innerHeight per usual.
 	// No caching here since browsers can be resized, and setting
 	// up resize-triggered cache invalidation is not in scope.
