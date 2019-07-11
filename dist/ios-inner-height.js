@@ -12,6 +12,14 @@
  * device's current orientation.
  */
 module.exports = (function () {
+	// Avoid errors when globals are undefined (CI, etc)
+	// https://github.com/tylerjpeterson/ios-inner-height/pull/7
+	if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+		return function () {
+			return 0;
+		};
+	}
+
 	// Non-iOS browsers return window.innerHeight per usual.
 	// No caching here since browsers can be resized, and setting
 	// up resize-triggered cache invalidation is not in scope.
@@ -66,6 +74,7 @@ module.exports = (function () {
 		if (Math.abs(window.orientation) !== 90) {
 			return dims.h;
 		}
+
 		return dims.w;
 	};
 })();
