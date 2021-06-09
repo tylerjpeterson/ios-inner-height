@@ -1,6 +1,26 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.iosInnerHeight = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 'use strict';
 
+const isIOS = (() => {
+	if (/iPad|iPhone|iPod/.test(navigator.platform)) {
+		return true;
+	} else {
+		return (
+			navigator.maxTouchPoints &&
+			navigator.maxTouchPoints > 2 &&
+			/MacIntel/.test(navigator.platform)
+		);
+	}
+})();
+
+const isIpadOS = (() => {
+	return (
+		navigator.maxTouchPoints &&
+		navigator.maxTouchPoints > 2 &&
+		/MacIntel/.test(navigator.platform)
+	);
+})();
+
 /**
  * @module ios-inner-height
  *
@@ -24,7 +44,7 @@ module.exports = (function () {
 	// No caching here since browsers can be resized, and setting
 	// up resize-triggered cache invalidation is not in scope.
 	/* istanbul ignore if  */
-	if (!navigator.userAgent.match(/iphone|ipod|ipad/i)) {
+	if (!isIOS && !isIpadOS) {
 		/**
 		 * Avoids conditional logic in the implementation
 		 * @return {number} - window's innerHeight measurement in pixels

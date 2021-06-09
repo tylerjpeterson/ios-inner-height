@@ -1,14 +1,14 @@
 'use strict';
 
 // Overwrite the user agent
-Object.defineProperty(window.navigator, 'userAgent', {get: () => 'i am an iphone'});
+Object.defineProperty(window.navigator, 'platform', {get: () => 'iPhone'});
 
 // Tape tests: https://github.com/substack/tape
 const test = require('tape');
 const vph = require('./../..');
 
 test('should return proper user agent', assert => {
-	assert.equal('i am an iphone', window.navigator.userAgent);
+	assert.equal('iPhone', window.navigator.platform);
 	assert.end();
 });
 

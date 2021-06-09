@@ -1,5 +1,25 @@
 'use strict';
 
+const isIOS = (() => {
+	if (/iPad|iPhone|iPod/.test(navigator.platform)) {
+		return true;
+	} else {
+		return (
+			navigator.maxTouchPoints &&
+			navigator.maxTouchPoints > 2 &&
+			/MacIntel/.test(navigator.platform)
+		);
+	}
+})();
+
+const isIpadOS = (() => {
+	return (
+		navigator.maxTouchPoints &&
+		navigator.maxTouchPoints > 2 &&
+		/MacIntel/.test(navigator.platform)
+	);
+})();
+
 /**
  * @module ios-inner-height
  *
@@ -23,7 +43,7 @@ module.exports = (function () {
 	// No caching here since browsers can be resized, and setting
 	// up resize-triggered cache invalidation is not in scope.
 	/* istanbul ignore if  */
-	if (!navigator.userAgent.match(/iphone|ipod|ipad/i)) {
+	if (!isIOS && !isIpadOS) {
 		/**
 		 * Avoids conditional logic in the implementation
 		 * @return {number} - window's innerHeight measurement in pixels

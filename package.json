@@ -4,12 +4,13 @@
   "description": "Retrieve a consistent, accurate `window.innerHeight` measurement from iOS",
   "author": "Tyler Peterson <tylerjpeterson@gmail.com>",
   "main": "dist/ios-inner-height.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "mkdir -p dist && browserify -s iosInnerHeight index.js > dist/ios-inner-height.js && uglifyjs -c -o dist/ios-inner-height.min.js -- dist/ios-inner-height.js",
     "coverage": "mkdir -p coverage && browserify test/spec/test.js -p tape-istanbul/plugin | tape-run | tape-istanbul --output coverage/coverage.json && npm run report",
     "report": "istanbul report --root coverage lcov && open coverage/lcov-report/index.html",
     "lint": "xo ./index.js --no-esnext || true && xo ./test/spec/test.js || true",
-    "test": "browserify test/spec/test.js | browser-run | tap-spec",
+    "test": "browserify test/spec/test.js | browser-run | tap-spec && tsd",
     "docs": "jsdoc -c .jsdoc.json index.js -p -d docs/"
   },
   "dependencies": {},
@@ -23,6 +24,7 @@
     "tape": "^4.6.3",
     "tape-istanbul": "^1.1.1",
     "tape-run": "^3.0.0",
+    "tsd": "^0.17.0",
     "uglify-js": "^3.4.5",
     "xo": "latest"
   },
